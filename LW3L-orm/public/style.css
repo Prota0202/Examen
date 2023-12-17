@@ -1,0 +1,48 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+li {
+    background: #fff;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    list-style-type: none;
+}
+
+/* Links */
+a {
+    color: #00f;
+    text-decoration: none;
+}
+
+/* Forms */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+input[type="submit"] {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #555;
+}

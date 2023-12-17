@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Todo list</h1>
+
+    <!-- Formulaire pour ajouter une nouvelle télévision -->
+    <form action="/add" method="Post">
+      <h3>Ajouter une nouvelle télévision</h3>
+      <input type="text" name="Brand" placeholder="Marque" required>
+      <input type="number" name="Price" placeholder="Prix" required>
+      <input type="number" name="Size" placeholder="Taille en pouces" required>
+      <input type="text" name="Cause" placeholder="Cause">
+      <input type="submit" value="Ajouter">
+  </form>
+
+    
+    <h2>Liste des télévisions</h2>
+    <ul>
+        <% for(task of tasks) { %>
+            <li>Marque : <%= task.Brand %>, Prix : <%= task.Price %>, Taille : <%= task.Size %> pouces, Cause : <%= task.Cause %> - 
+                <a href="/broken/<%= task.id %>">Casser ?</a> - <a href='/moveToWishlist/<%= task.id %>'>Retirer</a></li>
+            </li>
+        <% } %>
+    </ul>
+    
+    <h3>Liste de souhaits</h3>
+    <ul>
+        <% for(task of wishlistTasks) { %>
+            <li>Marque : <%= task.Brand %>, Prix : <%= task.Price %>, Taille : <%= task.Size %> pouces, Cause : <%= task.Cause %> - 
+                <a href="/delete/<%= task.id %>">Supprimer</a> - <a href="/buy/<%= task.id %>">Acheter</a></li>
+            </li>
+        <% } %>
+    </ul>
+
+    <h3>Liste de cassées</h3>
+    <ul>
+        <% for(task of brokenTasks) { %>
+            <li>Marque : <%= task.Brand %>, Prix : <%= task.Price %>, Taille : <%= task.Size %> pouces, Cause : <%= task.Cause %> - 
+            </li>
+        <% } %>
+    </ul>
+
+</body>
+</html>
