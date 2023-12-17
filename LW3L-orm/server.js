@@ -16,9 +16,9 @@ app.post("/add", async function (req, res) {
 });
 
 app.get("/", async function (req, res) {
-  const brokenTasks = await Task.loadMany({Bought : 1 , Broken : 1})
   const wishlistTasks = await Task.loadMany({Bought : 0});
-  const tasks = await Task.loadMany({Bought : 1 });
+  const tasks = await Task.loadMany({Bought : 1});
+  const brokenTasks = await Task.loadMany({Bought : 1 , Broken : 1});
   res.render('listTasks.ejs', { wishlistTasks, tasks , brokenTasks });
 });
 
@@ -33,7 +33,8 @@ app.get('/broken/:id', async function(req, res){
   const task = await Task.load({id: req.params.id});
   task.Broken = 1;
   task.Bought = 1;
-  res.render("broken.ejs", {task : task});
+  await task.save();
+  res.redirect('/');
 });
 
 app.get("/buy/:id", async function (req, res) {
@@ -54,5 +55,14 @@ app.get('/moveToWishlist/:id', async (req, res) => {
   res.redirect('/'); // Rediriger vers la page principale
 });
 
+app.get('/repaired/:id', async function(req, res){
+  const task = await Task.load({id: req.params.id});
+  task.Broken = 0;
+  task.Bought = 0;
+  await task.save();
+  res.redirect('/'); // Rediriger vers la page principale
+});
+
 
 app.listen(4000);
+

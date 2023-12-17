@@ -40,6 +40,7 @@
     <ul>
         <% for(task of brokenTasks) { %>
             <li>Marque : <%= task.Brand %>, Prix : <%= task.Price %>, Taille : <%= task.Size %> pouces, Cause : <%= task.Cause %> - 
+                <a href="/repaired/<%= task.id %>">Reparer</a>
             </li>
         <% } %>
     </ul>
