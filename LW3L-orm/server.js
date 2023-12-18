@@ -4,6 +4,8 @@ import Task from './models/Task.js';
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static('public'));
+
 app.post("/add", async function (req, res) {
   const task = new Task();
   task.Brand = req.body.Brand;
@@ -44,8 +46,6 @@ app.get("/buy/:id", async function (req, res) {
   await task.save();
   res.redirect('/')
 });
-
-app.use(express.static('public'));
 
 app.get('/moveToWishlist/:id', async (req, res) => {
   const id = req.params.id;
